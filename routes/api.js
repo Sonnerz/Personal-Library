@@ -88,7 +88,7 @@ module.exports = function (app) {
       //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
       MongoClient.connect(MONGODB_CONNECTION_STRING, {useNewUrlParser: true,  useUnifiedTopology: true}, function(err, client) {
         let db = client.db('fcc-personal-library');
-        db.collection('books').find({"_id": ObjectId(bookid)}).toArray((err, doc) => {
+        db.collection('books').find({"_id": bookid}).toArray((err, doc) => {
           if(!doc.length == 0) { 
             return res.send(doc[0]);
           } else {
