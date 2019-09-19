@@ -85,6 +85,12 @@ module.exports = function (app) {
   
     .get(function (req, res){
       var bookid = req.params.id;
+      if (ObjectId.isValid(bookid)) {
+        bookid = ObjectId(bookid);
+      } else {
+        res.send("not found")
+        return res.end();
+      }
       //json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
       MongoClient.connect(MONGODB_CONNECTION_STRING, {useNewUrlParser: true,  useUnifiedTopology: true}, function(err, client) {
         let db = client.db('fcc-personal-library');
