@@ -177,6 +177,9 @@ ol {
 #message, #commentMessage {
   color: #605;
 }
+.credit{
+  font-size: 0.75em;
+}
 
 @media (min-width: 576px) {
   .container {
